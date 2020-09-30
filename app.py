@@ -44,66 +44,73 @@ root=Tk()
 
 
 root.configure(background="lightgrey")
-root.resizable(width=None,height=None)
-root.geometry('300x420')
+root.resizable(0,0)
+root.geometry('300x280')
 root.title("income Tax Calculator")
 
 entry= StringVar()
 equation = StringVar()
 
+# *************************************************************************
+inputField = Frame(root)
+inputField.place(x=20,y=10)
+
+labelincome = Label(inputField,text="Your Income",background="royalblue",width=12,foreground="White")
+labelincome.grid(row=0, column=0)
+incomefield = Entry(inputField,textvariable = equation, width = 20,background="SkyBlue2",foreground="black",justify=CENTER)
+incomefield.grid(row=0,column=1)
 
 
-labelincome = Label(root,text="Your Income",background="royalblue",foreground="White")
-labelincome.place(x=110,y=0)
-incomefield = Entry(root,textvariable = equation, width = 40,background="SkyBlue2",foreground="black")
-incomefield.place(x=25,y=21)
+totaltax = Label(inputField,text="Total Tax",background="royalblue",width=12,foreground="white")
+totaltax.grid(row=1,column=0)
+entryField = Entry(inputField,textvariable = entry, width = 20,background="Yellowgreen",foreground="black",justify=CENTER)
+entryField.grid(row=1,column=1)
 
+# *************************************************************************
+findTaxFrame = Frame(root)
+findTaxFrame.place(x=20,y=80)
 
-totaltax = Label(root,text="Total Tax",background="royalblue",foreground="white")
-totaltax.place(x=120,y=60)
-entryField = Entry(root,textvariable = entry, width = 40,background="Yellowgreen",foreground="black",justify=CENTER)
-entryField.place(x=27,y=80)
+button = Button(findTaxFrame,text="Find Income Tax", width = 30,activebackground="cyan",background='skyblue', command=butter)
+button.grid(row=2,column=0,columnspan=3)
 
+# *************************************************************************
+numpadFrame = Frame(root)
+numpadFrame.place(x=20,y=120)
 
+btn9 = ttk.Button(numpadFrame, text = '9' , width = 10 ,  command = lambda : press(9) )
+btn9.grid(row=0,column=0)
 
-button = Button(root,text="find income tax", width = 40, command=butter)
-button.place(x=5,y=260)
+btn8 = ttk.Button(numpadFrame, text = '8' , width = 10 ,  command = lambda : press(8) )
+btn8.grid(row=0,column=1)
 
+btn7 = ttk.Button(numpadFrame, text = '7' , width = 10 ,  command = lambda : press(7) )
+btn7.grid(row=0,column=2)
 
+btn6 = ttk.Button(numpadFrame, text = '6' , width = 10 ,  command = lambda : press(6) )
+btn6.grid(row=1,column=0)
 
+btn5 = ttk.Button(numpadFrame, text = '5' , width = 10 ,  command = lambda : press(5) )
+btn5.grid(row=1,column=1)
 
-btn9 = ttk.Button(root, text = '9' , width = 15 ,  command = lambda : press(9) )
-btn9.place(x=0,y=290 )
+btn4 = ttk.Button(numpadFrame, text = '4' , width = 10 ,  command = lambda : press(4) )
+btn4.grid(row=1,column=2)
 
-btn8 = ttk.Button(root, text = '8' , width = 15 ,  command = lambda : press(8) )
-btn8.place(x=100,y=290)
+btn3 = ttk.Button(numpadFrame, text = '3' , width = 10,  command = lambda : press(3)  )
+btn3.grid(row=2,column=0)
 
-btn7 = ttk.Button(root, text = '7' , width = 15 ,  command = lambda : press(7) )
-btn7.place(x=200,y=290)
+btn2 = ttk.Button(numpadFrame, text = '2' , width = 10, command = lambda : press(2)  )
+btn2.grid(row=2,column=1)
 
-btn6 = ttk.Button(root, text = '6' , width = 15 ,  command = lambda : press(6) )
-btn6.place(x=0,y=315 )
+btn1 = ttk.Button(numpadFrame, text = '1' , width = 10 ,  command = lambda : press(1) )
+btn1.grid(row=2,column=2)
 
-btn5 = ttk.Button(root, text = '5' , width = 15 ,  command = lambda : press(5) )
-btn5.place(x=101,y=315)
+zeroAndClearFrame = Frame(root)
+zeroAndClearFrame.place(x=20,y=220)
 
-btn4 = ttk.Button(root, text = '4' , width = 15 ,  command = lambda : press(4) )
-btn4.place(x=200,y=315)
+btn0= ttk.Button(zeroAndClearFrame, text = '0' , width = 10,  command = lambda : press(0)  )
+btn0.grid(row=3,column=0)
 
-btn3 = ttk.Button(root, text = '3' , width = 15,  command = lambda : press(3)  )
-btn3.place(x=2,y=340)
-
-btn2 = ttk.Button(root, text = '2' , width = 15,  command = lambda : press(2)  )
-btn2.place(x=101,y=340)
-
-btn1 = ttk.Button(root, text = '1' , width = 15 ,  command = lambda : press(1) )
-btn1.place(x=200,y=340)
-
-btn0= ttk.Button(root, text = '0' , width = 48,  command = lambda : press(0)  )
-btn0.place(x=0,y=368)
-
-btnclr = ttk.Button(root, text = 'Clear' , width = 48,  command = clear )
-btnclr.place(x=0,y=392)
-
+btnclr = Button(zeroAndClearFrame, text = 'Clear' , width = 19, background='orange', activebackground='red',activeforeground='white',  command = clear )
+btnclr.grid(row=3,column=1)
 
 root.mainloop()
